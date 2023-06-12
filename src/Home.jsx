@@ -4,13 +4,11 @@ import background from "./images/pattern-bg-desktop.png";
 import icons from "./images/icon-arrow.svg";
 import InputBase from "@mui/material/InputBase";
 
-
 export const Home = () => {
 	const [address, setAddress] = useState("");
 	const [ipAddress, setIpAddress] = useState("");
 	const checkIpAddress = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gi;
 	const checkDomain = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/;
-
 
 	useEffect(() => {
 		try {
@@ -26,8 +24,6 @@ export const Home = () => {
 		}
 	}, []);
 
-
-
 	const getIpAddress = async () => {
 		const res = await fetch(
 			`https://geo.ipify.org/api/v2/country,city?apiKey=at_RSolMxXJfYDOCnOw9zZWGlLPzTwoO&
@@ -41,7 +37,6 @@ export const Home = () => {
 		e.preventDefault();
 		getIpAddress();
 		setIpAddress("");
-
 	};
 
 	return (
@@ -57,6 +52,8 @@ export const Home = () => {
 
 					<form onSubmit={handleSubmit} autoComplete="off" className="flex justify-center max-w-xl mx-auto bg-white rounded-xl">
 						<InputBase
+							type="text"
+							id="ipaddress"
 							value={ipAddress}
 							onChange={(e) => setIpAddress(e.target.value)}
 							fullWidth
